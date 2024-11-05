@@ -8,8 +8,9 @@ class TuplesLinkedList:
     # TODO modify "add()" so that it takes a key and a value as parameters and 
     # creates a  tuple using them. The Node should then be created using the 
     # tuple.
-    def add(self, value):
-        n = Node(value)
+    def add(self, key, value):
+        newKeyValuePair = (key, value)
+        n = Node(newKeyValuePair)
         if self.first is None:
             self.first = n
             self.last = n
@@ -34,8 +35,8 @@ class TuplesLinkedList:
     def find(self, searchInput):
         currentNode = self.first
         while currentNode is not None:
-            if currentNode.value == searchInput:
-                return currentNode
+            if currentNode.value[0] == searchInput:
+                return currentNode.value[1]
             else:
                 currentNode = currentNode.next
         return None
